@@ -29,7 +29,7 @@ namespace Lessons.AI.HierarchicalStateMachine
             value = default;
             return false;
         }
-
+        
         public bool HasVariable(string key)
         {
             return this.variables.ContainsKey(key);

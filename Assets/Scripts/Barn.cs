@@ -1,3 +1,4 @@
+using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -5,17 +6,21 @@ namespace Sample
 {
     public sealed class Barn : MonoBehaviour
     {
+        public event Action<bool> OnResourceAmountChanged;
+        
         [SerializeField]
         private int resourceCapacity = 50; 
         
         [ShowInInspector, ReadOnly]
         private int resourceAmount;
 
+        [Button]
         public void AddResources(int range)
         {
             if (this.CanAddResources(range))
             {
                 this.resourceAmount += range;
+                OnResourceAmountChanged?.Invoke(IsFull());
             }
         }
 

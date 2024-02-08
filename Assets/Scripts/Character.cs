@@ -1,11 +1,15 @@
+using System;
 using JetBrains.Annotations;
 using Sirenix.OdinInspector;
+
 using UnityEngine;
 
 namespace Sample
 {
     public sealed class Character : MonoBehaviour
     {
+        public event Action<bool> OnResourceAmountChanged;
+        
         [SerializeField]
         private float moveSpeed = 5.0f;
 
@@ -54,6 +58,7 @@ namespace Sample
             if (this.choppingTree.TakeResource())
             {
                 this.resourceAmount++;
+                OnResourceAmountChanged?.Invoke(IsResourceBagFull());
             }
         }
 

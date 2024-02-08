@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Lessons.AI.LessonBehaviourTree
+namespace Plugins.BehaviourTree
 {
     public sealed class BehaviourNodeSelector : BehaviourNode, IBehaviourCallback
     {

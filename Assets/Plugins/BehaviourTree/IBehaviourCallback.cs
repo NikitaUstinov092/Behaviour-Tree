@@ -1,4 +1,4 @@
-namespace Lessons.AI.LessonBehaviourTree
+namespace Plugins.BehaviourTree
 {
     public interface IBehaviourCallback
     {

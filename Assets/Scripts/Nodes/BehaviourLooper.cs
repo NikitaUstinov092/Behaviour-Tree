@@ -1,6 +1,7 @@
+using Plugins.BehaviourTree;
 using UnityEngine;
 
-namespace Plugins.BehaviourTree
+namespace Nodes
 {
     public sealed class BehaviourLooper : MonoBehaviour
     {

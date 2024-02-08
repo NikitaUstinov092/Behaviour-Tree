@@ -1,7 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Lessons.AI.LessonBehaviourTree
+namespace Plugins.BehaviourTree
 {
     public abstract class BehaviourNode : MonoBehaviour
     {

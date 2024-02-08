@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Sample.Common
+namespace Common
 {
     public class TreesStorage: MonoBehaviour
     {

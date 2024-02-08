@@ -1,28 +1,29 @@
-using System;
-using Lessons.AI.HierarchicalStateMachine;
-using Sample;
+using Plugins.Blackboard;
 using UnityEngine;
 
-public class BarnFullSensor : MonoBehaviour
+namespace Sensors
 {
-   [SerializeField] 
-   private Barn barn;
+   public class BarnFullSensor : MonoBehaviour
+   {
+      [SerializeField] 
+      private Barn barn;
    
-   [SerializeField] 
-   private Blackboard blackboard;
+      [SerializeField] 
+      private Blackboard blackboard;
 
-   private void Awake()
-   {
-      barn.OnResourceAmountChanged += CheckBarnFull;
-   }
+      private void Awake()
+      {
+         barn.OnResourceAmountChanged += CheckBarnFull;
+      }
 
-   private void OnDisable()
-   {
-      barn.OnResourceAmountChanged -= CheckBarnFull;
-   }
+      private void OnDisable()
+      {
+         barn.OnResourceAmountChanged -= CheckBarnFull;
+      }
 
-   private void CheckBarnFull(bool isFull)
-   {
-      blackboard.SetVariable(BlackboardKeys.BARN_FULL, isFull);
+      private void CheckBarnFull(bool isFull)
+      {
+         blackboard.SetVariable(BlackboardKeys.BARN_FULL, isFull);
+      }
    }
 }

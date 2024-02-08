@@ -1,27 +1,29 @@
-using Lessons.AI.HierarchicalStateMachine;
-using Sample;
+using Plugins.Blackboard;
 using UnityEngine;
 
-public class BackPackFullSensor : MonoBehaviour
+namespace Sensors
 {
-    [SerializeField] 
-    private Character character;
+    public class BackPackFullSensor : MonoBehaviour
+    {
+        [SerializeField] 
+        private Character character;
     
-    [SerializeField] 
-    private Blackboard blackboard;
+        [SerializeField] 
+        private Blackboard blackboard;
    
-    private void Awake()
-    {
-        character.OnResourceAmountChanged += CheckBackPackFull;
-    }
+        private void Awake()
+        {
+            character.OnResourceAmountChanged += CheckBackPackFull;
+        }
 
-    private void OnDisable()
-    {
-        character.OnResourceAmountChanged -= CheckBackPackFull;
-    }
+        private void OnDisable()
+        {
+            character.OnResourceAmountChanged -= CheckBackPackFull;
+        }
     
-    private void CheckBackPackFull(bool isFull)
-    {
-        blackboard.SetVariable(BlackboardKeys.BACK_PACK_FULL, isFull);
+        private void CheckBackPackFull(bool isFull)
+        {
+            blackboard.SetVariable(BlackboardKeys.BACK_PACK_FULL, isFull);
+        }
     }
 }

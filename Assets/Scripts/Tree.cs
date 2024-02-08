@@ -1,41 +1,38 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Sample
+public sealed class Tree : MonoBehaviour
 {
-    public sealed class Tree : MonoBehaviour
+    [SerializeField]
+    private Animator animator;
+
+    [SerializeField]
+    private int remainingResources = 10;
+
+    public bool HasResources()
     {
-        [SerializeField]
-        private Animator animator;
+        return this.remainingResources > 0;
+    }
 
-        [SerializeField]
-        private int remainingResources = 10;
-
-        public bool HasResources()
+    [Button]
+    public bool TakeResource()
+    {
+        if (this.remainingResources <= 0)
         {
-            return this.remainingResources > 0;
+            return false;
         }
 
-        [Button]
-        public bool TakeResource()
+        this.remainingResources--;
+
+        if (this.remainingResources <= 0)
         {
-            if (this.remainingResources <= 0)
-            {
-                return false;
-            }
-
-            this.remainingResources--;
-
-            if (this.remainingResources <= 0)
-            {
-                this.gameObject.SetActive(false);
-            }
-            else
-            {
-                this.animator.Play("Chop", -1, 0);
-            }
-
-            return true;
+            this.gameObject.SetActive(false);
         }
+        else
+        {
+            this.animator.Play("Chop", -1, 0);
+        }
+
+        return true;
     }
 }

@@ -55,7 +55,6 @@ public class BN_MoveBarn : BehaviourNode
    
             if (distanceVector.magnitude <= stoppingDistance)
             {
-                      // Return(true); // добавил может убрать потом
                 break;
             }
    

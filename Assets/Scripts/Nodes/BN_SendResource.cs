@@ -17,9 +17,11 @@ public class BN_SendResource : BehaviourNode
         if (!blackboard.TryGetVariable(BlackboardKeys.UNIT, out Character character) || barn.IsFull())
         {
             Return(false);
-        } 
-        
-        barn.AddResources(character.UnloadResources());
-        Return(true);
+        }
+        else
+        {
+            barn.AddResources(character.UnloadResources());
+            Return(true);
+        }
     }
 }

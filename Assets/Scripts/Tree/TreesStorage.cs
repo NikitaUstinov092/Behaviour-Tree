@@ -7,30 +7,22 @@ namespace Common
 {
     public class TreesStorage: MonoBehaviour
     {
-        public event Action<List<Transform>> OnTreesListChanged;
+        public event Action<List<Tree>> OnTreesListChanged;
        
         [ShowInInspector, ReadOnly]
-        private readonly List<Transform> trees = new();
-
-        public void SetUp(params Transform[] massTrees)
-        {
-            foreach (var tree in massTrees)
-            {
-                trees.Add(tree);
-            }
-            OnTreesListChanged?.Invoke(trees);
-        }
+        private readonly List<Tree> trees = new();
         
-        public void AddTree(Transform tree)
+        
+        public void AddTree(Tree tree)
         {
-            if (!trees.Contains(tree))
+            if (trees.Contains(tree))
                 return;
             
             trees.Add(tree);
             OnTreesListChanged?.Invoke(trees);
         }
         
-        public void RemoveTree(Transform tree)
+        public void RemoveTree(Tree tree)
         {
             if (!trees.Contains(tree)) 
                 return;

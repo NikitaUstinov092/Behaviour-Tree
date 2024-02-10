@@ -11,19 +11,19 @@ namespace Nodes
         private Blackboard blackboard;
         private Coroutine coroutine;
     
-        private const float StoppingDistance = 3f;
+        private const float StoppingDistance = 1f;
     
         protected override void Run()
         {
-            if (!blackboard.TryGetVariable(BlackboardKeys.TREE, out Transform target) 
+            if (!blackboard.TryGetVariable(BlackboardKeys.TREE, out Tree target) 
                 ||!blackboard.TryGetVariable(BlackboardKeys.UNIT, out Character unit)
                 || target == null)
             {
                 Return(false);
                 return;
             }
-
-            coroutine = StartCoroutine(MoveToPosition(unit, target));
+         
+            coroutine = StartCoroutine(MoveToPosition(unit, target.transform));
         }
    
         protected override void OnAbort()
@@ -36,13 +36,13 @@ namespace Nodes
     
         private IEnumerator MoveToPosition(Character unit, Transform target)
         {
-            var unitPosition = unit.transform.position;
-            var targetPosition = target.position;
-        
             var period = new WaitForFixedUpdate();
 
             while (true)
             {
+                var unitPosition = unit.transform.position;
+                var targetPosition = target.position;
+                
                 if (target == null)
                 {
                     Return(false);
@@ -53,13 +53,12 @@ namespace Nodes
 
                 if (distanceVector.magnitude <= StoppingDistance)
                 {
-                    Return(true); // добавил может убрать потом
                     break;
                 }
 
                 Vector3 direction = distanceVector.normalized;
                 unit.Move(direction);
-
+                Debug.Log("MoveToTree");
                 yield return period;
             }
             

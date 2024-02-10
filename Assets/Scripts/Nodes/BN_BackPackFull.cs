@@ -14,7 +14,9 @@ namespace Nodes
         protected override void Run()
         {
             var backPackFull = blackboard.HasVariable(BlackboardKeys.BACK_PACK_FULL);
-            Return(backPackFull == requiredValue);
+            var checkedValue = backPackFull == requiredValue;
+            Debug.Log("BackPackFull" + checkedValue);
+            Return(checkedValue);
         }
     }
 }

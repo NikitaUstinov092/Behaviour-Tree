@@ -17,25 +17,26 @@ namespace Sensors
       private TreesStorage _treesStorage;
       private void Awake()
       {
+         Debug.Log("Awake");
          _treesStorage.OnTreesListChanged += FindClosestTree;
       }
       private void OnDisable()
       {
          _treesStorage.OnTreesListChanged -= FindClosestTree;
       }
-      private void FindClosestTree(List<Transform> trees)
+      private void FindClosestTree(List<Tree> trees)
       {
          if (character == null || trees == null || trees.Count == 0)
          {
             return;
          }
 
-         Transform closestTree = null;
+         Tree closestTree = null;
          var closestDistance = Mathf.Infinity;
 
          foreach (var tree in trees)
          {
-            var distanceToTree = Vector3.Distance(character.position, tree.position);
+            var distanceToTree = Vector3.Distance(character.position, tree.transform.position);
             if (!(distanceToTree < closestDistance))
                continue;
         
@@ -43,7 +44,7 @@ namespace Sensors
             closestTree = tree;
          }
 
-         if (closestTree != null)
+         if (closestTree != null && closestTree.gameObject.activeInHierarchy)
          {
             blackboard.SetVariable(BlackboardKeys.TREE, closestTree);
          }

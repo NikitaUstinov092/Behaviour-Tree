@@ -12,6 +12,7 @@ namespace Nodes
         protected override void Run()
         {
             var hasTree = blackboard.HasVariable(BlackboardKeys.TREE);
+            Debug.Log("SearchTree "+ hasTree);
             Return(hasTree);
         }
     }

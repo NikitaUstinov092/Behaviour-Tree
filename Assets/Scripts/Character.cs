@@ -69,6 +69,7 @@ public sealed class Character : MonoBehaviour
     {
         var unloadResources = this.resourceAmount;
         this.resourceAmount = 0;
+        OnResourceAmountChanged?.Invoke(IsResourceBagFull());
         return unloadResources;
     }
 

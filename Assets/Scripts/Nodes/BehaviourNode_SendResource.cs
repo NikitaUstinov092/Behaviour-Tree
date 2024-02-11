@@ -2,7 +2,7 @@ using Plugins.BehaviourTree;
 using Plugins.Blackboard;
 using UnityEngine;
 
-public class BN_SendResource : BehaviourNode
+public class BehaviourNode_SendResource : BehaviourNode
 {
     [SerializeField]
     private Blackboard blackboard;

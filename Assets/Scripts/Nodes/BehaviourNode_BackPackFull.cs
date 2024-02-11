@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Nodes
 {
-    public sealed class BN_BackPackFull : BehaviourNode
+    public sealed class BehaviourNode_BackPackFull : BehaviourNode
     {
         [SerializeField]
         private Blackboard blackboard;
@@ -14,9 +14,7 @@ namespace Nodes
         protected override void Run()
         {
             blackboard.TryGetVariable(BlackboardKeys.BACK_PACK_FULL, out bool iSFull);
-            var checkedValue = iSFull == requiredValue;
-            Debug.Log($"BackPackFull {checkedValue}, {gameObject.name}");
-            Return(checkedValue);
+            Return(iSFull == requiredValue);
         }
     }
 }

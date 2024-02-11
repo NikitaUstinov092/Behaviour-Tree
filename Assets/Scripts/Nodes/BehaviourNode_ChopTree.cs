@@ -3,11 +3,14 @@ using Plugins.BehaviourTree;
 using Plugins.Blackboard;
 using UnityEngine;
 
-public class BN_ChopTree : BehaviourNode
+public class BehaviourNode_ChopTree : BehaviourNode
 {
     [SerializeField]
     private Blackboard blackboard;
 
+    [SerializeField] 
+    private float chopCooldown = 1;
+    
     private Coroutine coroutine;
     
     protected override void Run()
@@ -40,8 +43,7 @@ public class BN_ChopTree : BehaviourNode
                 break;
             }
             character.Chop(tree);
-            Debug.Log("ChopTree");
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(chopCooldown);
         }
         this.Return(true);
     }

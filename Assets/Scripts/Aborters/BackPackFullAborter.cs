@@ -1,9 +1,8 @@
-using System;
 using Plugins.BehaviourTree;
 using Plugins.Blackboard;
 using UnityEngine;
 
-public class B_СhopAborter : MonoBehaviour
+public class BackPackFullAborter : MonoBehaviour
 {
     [SerializeField]
     private Blackboard blackboard;

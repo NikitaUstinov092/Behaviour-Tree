@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Nodes
 {
-    public class BN_SearchTree : BehaviourNode
+    public class BehaviourNode_SearchTree : BehaviourNode
     {
         [SerializeField]
         private Blackboard blackboard;
@@ -12,7 +12,6 @@ namespace Nodes
         protected override void Run()
         {
             var hasTree = blackboard.HasVariable(BlackboardKeys.TREE);
-            Debug.Log("SearchTree "+ hasTree);
             Return(hasTree);
         }
     }

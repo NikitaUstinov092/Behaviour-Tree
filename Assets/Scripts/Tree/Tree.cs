@@ -8,7 +8,10 @@ public sealed class Tree : MonoBehaviour
 
     [SerializeField]
     private int remainingResources = 10;
-
+    public void AddResource(int count)
+    {
+        remainingResources += count;
+    }
     public bool HasResources()
     {
         return this.remainingResources > 0;
